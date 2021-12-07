@@ -5,7 +5,8 @@ require_relative '../src/scenarious/convert_temperature'
 RSpec.describe States::InputTargetTemperature do
   type_of_degrees = 'k', 
                     temperature_amount = '34.0'
-  state = States::InputTargetTemperature.new(type_of_degrees, temperature_amount)
+  state = States::InputTargetTemperature.new(type_of_degrees, 
+                                             temperature_amount)
 
   let(:io_mock) { instance_double IOAdapter }
   before do
@@ -36,7 +37,8 @@ RSpec.describe States::InputTargetTemperature do
       allow(temperature_handler_mock).to receive(:correct_temperature_type?).and_return true
         
       actual_state = state.next
-      expected_state = States::ConvertTemperature.new(type_of_degrees, temperature_amount, to_type)
+      expected_state = States::ConvertTemperature.new(type_of_degrees, 
+                                                      temperature_amount, to_type)
         
       expect(temperature_handler_mock).to have_received(:correct_temperature_type?).with(to_type)
       expect(actual_state.type_of_degrees).to eq(expected_state.type_of_degrees)

@@ -39,15 +39,18 @@ RSpec.describe TemperatureHandler do
 
   describe '#inflate_class' do
     it 'when inflates Celsius class' do
-      expect(subject.inflate_class('C', temperature).class).to be_a(Temperature::Celsius.class)
+      expect(subject.inflate_class('C', 
+                                   temperature).class).to be_a(Temperature::Celsius.class)
     end
 
     it 'when inflates Fahrenheit class' do
-      expect(subject.inflate_class('F', temperature).class).to be_a(Temperature::Fahrenheit.class)
+      expect(subject.inflate_class('F', 
+                                   temperature).class).to be_a(Temperature::Fahrenheit.class)
     end
 
     it 'when inflates Kelvin class' do
-      expect(subject.inflate_class('K', temperature).class).to be_a(Temperature::Kelvin.class)
+      expect(subject.inflate_class('K', 
+                                   temperature).class).to be_a(Temperature::Kelvin.class)
     end
 
     it 'when inflates unexpected class' do

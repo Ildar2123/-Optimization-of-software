@@ -18,8 +18,12 @@ module States
     end
 
     def next
-      temperature_inf = TemperatureHandler.instance.inflate_class(type_of_degrees, temperature_amount.to_f)
-      converted_temperature = TemperatureHandler.instance.convert(temperature_inf, to_type)
+      temperature_inf = TemperatureHandler.instance.inflate_class(
+        type_of_degrees, temperature_amount.to_f
+      )
+      converted_temperature = TemperatureHandler.instance.convert(
+        temperature_inf, to_type
+      )
       IOAdapter.instance.write converted_temperature.value
       Exit.new
     end
